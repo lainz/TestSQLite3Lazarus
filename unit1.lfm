@@ -1,0 +1,92 @@
+object Form1: TForm1
+  Left = 432
+  Height = 591
+  Top = 127
+  Width = 728
+  Caption = 'Form1'
+  ClientHeight = 591
+  ClientWidth = 728
+  OnCreate = FormCreate
+  LCLVersion = '2.1.0.0'
+  object DBGrid1: TDBGrid
+    Left = 8
+    Height = 440
+    Top = 128
+    Width = 712
+    Color = clWindow
+    Columns = <    
+      item
+        Title.Caption = 'id'
+        Visible = False
+        FieldName = 'id'
+      end    
+      item
+        Title.Caption = 'nombre'
+        FieldName = 'nombre'
+      end>
+    DataSource = DataSource1
+    TabOrder = 0
+    OnEditingDone = DBGrid1EditingDone
+  end
+  object Button2: TButton
+    Left = 264
+    Height = 25
+    Top = 8
+    Width = 75
+    Caption = 'Guardar'
+    OnClick = Button2Click
+    TabOrder = 1
+    Visible = False
+  end
+  object Edit1: TEdit
+    Left = 96
+    Height = 23
+    Top = 8
+    Width = 152
+    TabOrder = 2
+    Text = 'Edit1'
+    Visible = False
+  end
+  object Button1: TButton
+    Left = 8
+    Height = 25
+    Top = 8
+    Width = 75
+    Caption = 'Editar'
+    OnClick = Button1Click
+    TabOrder = 3
+  end
+  object SQLite3Connection1: TSQLite3Connection
+    Connected = False
+    LoginPrompt = False
+    KeepConnection = False
+    Transaction = SQLTransaction1
+    Left = 72
+    Top = 32
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = False
+    Database = SQLite3Connection1
+    Left = 72
+    Top = 113
+  end
+  object SQLQuery1: TSQLQuery
+    PacketRecords = -1
+    FieldDefs = <>
+    Database = SQLite3Connection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'SELECT * FROM emuladores'
+    )
+    Options = [sqoKeepOpenOnCommit, sqoAutoApplyUpdates, sqoAutoCommit]
+    Params = <>
+    UpdateMode = upWhereAll
+    Left = 72
+    Top = 200
+  end
+  object DataSource1: TDataSource
+    DataSet = SQLQuery1
+    Left = 72
+    Top = 288
+  end
+end
