@@ -27,6 +27,7 @@ type
     Button2: TButton;
     DataSource1: TDataSource;
     DBGrid1: TDBGrid;
+    DBNavigator1: TDBNavigator;
     Edit1: TEdit;
     SQLite3Connection1: TSQLite3Connection;
     SQLQuery1: TSQLQuery;

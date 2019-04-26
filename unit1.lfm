@@ -56,6 +56,24 @@ object Form1: TForm1
     OnClick = Button1Click
     TabOrder = 3
   end
+  object DBNavigator1: TDBNavigator
+    Left = 8
+    Height = 25
+    Top = 96
+    Width = 241
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 25
+    ClientWidth = 241
+    DataSource = DataSource1
+    Options = []
+    TabOrder = 4
+  end
   object SQLite3Connection1: TSQLite3Connection
     Connected = False
     LoginPrompt = False
