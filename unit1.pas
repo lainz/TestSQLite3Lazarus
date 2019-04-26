@@ -34,7 +34,6 @@ type
     SQLTransaction1: TSQLTransaction;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
-    procedure DBGrid1EditingDone(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
 
@@ -79,26 +78,13 @@ begin
   Button2.Visible := False;
 end;
 
-procedure TForm1.DBGrid1EditingDone(Sender: TObject);
-begin
-  SQLQuery1.Edit;
-  SQLQuery1.Post;
-end;
-
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   SQLite3Connection1.DatabaseName := Application.Location + 'lainz.sqlite';
   SQLite3Connection1.Connected := True;
-
-  try
-    SQLite3Connection1.ExecuteDirect(
-      'CREATE TABLE IF NOT EXISTS emuladores(id int, nombre varchar(50));');
-    SQLTransaction1.Commit;
-  except
-    on e: Exception do
-      ShowMessage(e.Message);
-  end;
-
+  SQLite3Connection1.ExecuteDirect(
+    'CREATE TABLE IF NOT EXISTS emuladores(id int, nombre varchar(50));');
+  SQLTransaction1.Commit;
   SQLQuery1.Active := True;
 end;
 
@@ -106,7 +92,7 @@ end;
 begin
   SQLQuery1.ApplyUpdates; <- sqoAutoApplyUpdates
   SQLTransaction1.Commit; <- Options sqoAutoCommit
-  UpdateMode <- upWhereAll (previene error no hay datos que enviar)
+  UpdateMode <- upWhereAll (prevents error that there is nothing to commit)
   SQLQuery1.Open; <- sqoKeepOpenOnCommit
 end;}
 
